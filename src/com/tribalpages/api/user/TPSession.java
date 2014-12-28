@@ -1,6 +1,6 @@
 package com.tribalpages.api.user;
 
-public class Session {
+public class TPSession {
 	private boolean active;
 	private String message;
 	private int key;
@@ -15,7 +15,7 @@ public class Session {
 	public int getMemberid() {
 		return memberid;
 	}
-	Session(String message) {
+	TPSession(String message) {
 		this.message = message;
 		key = -1;
 		memberid = -1;
@@ -24,7 +24,7 @@ public class Session {
 	public boolean isActive() {
 		return active;
 	}
-	Session(int key, int memberid) {
+	TPSession(int key, int memberid) {
 		this.message = "Login ok";
 		this.key = key;
 		this.memberid = memberid;
