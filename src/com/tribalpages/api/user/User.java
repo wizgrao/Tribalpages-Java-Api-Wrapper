@@ -37,7 +37,13 @@ public class User {
 			}
 			JSONObject response = new JSONObject(tot);
 			if (response.getInt("statuscode") == 1) {
-
+				JSONObject result = response.getJSONObject("result");
+				if (result.getInt("result") == 1) {
+					s = new Session(result.getInt("key"),
+							result.getInt("memberid"));
+				} else {
+					s = new Session(result.getString("reasonText"));
+				}
 			} else {
 				s = new Session("Server error");
 			}

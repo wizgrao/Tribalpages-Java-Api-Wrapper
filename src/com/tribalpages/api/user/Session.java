@@ -5,6 +5,7 @@ public class Session {
 	private String message;
 	private int key;
 	private int memberid;
+
 	public String getMessage() {
 		return message;
 	}
