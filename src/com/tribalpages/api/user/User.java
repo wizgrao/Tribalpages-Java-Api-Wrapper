@@ -9,13 +9,17 @@ import org.json.JSONObject;
 import com.tribalpages.api.request.LoginRequestBuilder;
 
 public class User {
-	private String userName;
+	private String email;
 	private String password;
-	public String getUserName() {
-		return userName;
+	public User(String userName, String password) {
+		this.email = userName;
+		this.password = password;
 	}
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	public String getPassword() {
 		return password;
@@ -28,7 +32,7 @@ public class User {
 		Session s = null;;
 		try {
 			BufferedReader b = new BufferedReader(new InputStreamReader(
-					new LoginRequestBuilder(userName, password).getURL()
+					new LoginRequestBuilder(email, password).getURL()
 							.openStream()));
 			String buf = "";
 			String tot = "";

@@ -21,7 +21,7 @@ public class Session {
 		memberid = -1;
 		active = false;
 	}
-	boolean isActive() {
+	public boolean isActive() {
 		return active;
 	}
 	Session(int key, int memberid) {
