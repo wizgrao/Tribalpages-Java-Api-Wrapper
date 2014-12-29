@@ -6,7 +6,7 @@ import java.net.URL;
 import com.tribalpages.api.user.TPManager;
 
 public class SiteInfoRequestBuilder {
-	private final String format = "http://www.tribalpages.com/tribe/ajaxss?servicename=MobileJSON&mid=%i&key=$i&userid=%s&action=6";
+	private final String format = "http://www.tribalpages.com/tribe/ajaxss?servicename=MobileJSON&mid=%d&key=%d&userid=%s&action=6";
 	private String finalURL;
 	public SiteInfoRequestBuilder(String userID, TPManager manager) {
 		finalURL = String.format(format, manager.getMemberid(),

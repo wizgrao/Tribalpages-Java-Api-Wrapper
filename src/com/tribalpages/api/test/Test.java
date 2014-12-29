@@ -25,5 +25,13 @@ public class Test {
 			for (Site site : sites) {
 				System.out.println(site.getID());
 			}
+		Site site;
+		if (sites != null) {
+			site = session.getSiteByID(sites[0].getID());
+			System.out.println(session.wasSuccessful() + " "
+					+ session.getMessage());
+			if (session.wasSuccessful())
+				System.out.println(site.getID());
+		}
 	}
 }

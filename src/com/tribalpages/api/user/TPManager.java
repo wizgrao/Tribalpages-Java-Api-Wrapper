@@ -55,6 +55,7 @@ public class TPManager {
 			return null;
 		} else {
 			success = true;
+			message = "sites retrieved succesfully";
 			JSONObject result = response.getJSONObject("result");
 			JSONArray array = result.getJSONArray("userdatas");
 			int numSites = array.length();
@@ -71,6 +72,7 @@ public class TPManager {
 		JSONObject response = getJSON(new SiteInfoRequestBuilder(id, this)
 				.getURL());
 		if (response.getInt("statuscode") == 1) {
+			message = "Site retrieved";
 			success = true;
 			return new Site(id);
 		} else {
