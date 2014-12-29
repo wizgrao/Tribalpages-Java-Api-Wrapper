@@ -58,6 +58,8 @@ public class Site {
 		for (int i = 0; i < num; i++) {
 			names[i] = new Person(namesArray.getJSONObject(i).getInt("id"));
 		}
+		session.setSucess(true);
+		session.setMessage("Getting name was succesful");
 		return names;
 
 	}
