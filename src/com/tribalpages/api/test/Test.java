@@ -2,8 +2,8 @@ package com.tribalpages.api.test;
 
 import java.util.Scanner;
 
-import site.Site;
-
+import com.tribalpages.api.site.Person;
+import com.tribalpages.api.site.Site;
 import com.tribalpages.api.user.TPManager;
 import com.tribalpages.api.user.User;
 
@@ -32,6 +32,11 @@ public class Test {
 					+ session.getMessage());
 			if (session.wasSuccessful())
 				System.out.println(site.getID());
+			Person[] name = site.getNames(session);
+			if (session.wasSuccessful()) {
+				System.out.println(name.length);
+			}
 		}
+
 	}
 }

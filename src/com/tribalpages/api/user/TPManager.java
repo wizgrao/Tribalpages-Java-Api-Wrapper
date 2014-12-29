@@ -8,10 +8,10 @@ import java.net.URL;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import site.Site;
-
 import com.tribalpages.api.request.SiteInfoRequestBuilder;
 import com.tribalpages.api.request.SitesRequestBuilder;
+import com.tribalpages.api.site.Site;
+import static com.tribalpages.api.utils.JSONManager.getJSON;
 
 public class TPManager {
 	private boolean success;
@@ -19,6 +19,13 @@ public class TPManager {
 	private int key;
 	private int memberid;
 	private int redirect;
+	public void setSucess(boolean success) {
+		this.success = success;
+	}
+	public void setMessage(String message) {
+		this.message = message;
+
+	}
 	public int getRedirect() {
 		return redirect;
 	}
@@ -78,23 +85,6 @@ public class TPManager {
 		} else {
 			success = false;
 			message = response.getString("message");
-			return null;
-		}
-
-	}
-	private static JSONObject getJSON(URL url) {
-		try {
-			BufferedReader b = new BufferedReader(new InputStreamReader(
-					url.openStream()));
-			String buff;
-			String total = "";
-			while ((buff = b.readLine()) != null) {
-				total += buff;
-			}
-			return new JSONObject(total);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 			return null;
 		}
 
