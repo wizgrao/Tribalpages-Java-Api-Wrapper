@@ -28,8 +28,8 @@ public class User {
 		this.password = passWord;
 	}
 
-	public TPSession login() {
-		TPSession s = null;;
+	public TPManager login() {
+		TPManager s = null;;
 		try {
 			BufferedReader b = new BufferedReader(new InputStreamReader(
 					new LoginRequestBuilder(email, password).getURL()
@@ -43,17 +43,17 @@ public class User {
 			if (response.getInt("statuscode") == 1) {
 				JSONObject result = response.getJSONObject("result");
 				if (result.getInt("result") == 1) {
-					s = new TPSession(result.getInt("key"),
+					s = new TPManager(result.getInt("key"),
 							result.getInt("memberid"));
 				} else {
-					s = new TPSession(result.getString("reasonText"));
+					s = new TPManager(result.getString("reasonText"));
 				}
 			} else {
-				s = new TPSession("Server error");
+				s = new TPManager("Server error");
 			}
 
 		} catch (IOException e) {
-			s = new TPSession("Bad url");
+			s = new TPManager("Bad url");
 		}
 		return s;
 	}
