@@ -10,6 +10,7 @@ import org.json.JSONObject;
 
 import site.Site;
 
+import com.tribalpages.api.request.SiteInfoRequestBuilder;
 import com.tribalpages.api.request.SitesRequestBuilder;
 
 public class TPManager {
@@ -53,6 +54,7 @@ public class TPManager {
 			message = response.getString("message");
 			return null;
 		} else {
+			success = true;
 			JSONObject result = response.getJSONObject("result");
 			JSONArray array = result.getJSONArray("userdatas");
 			int numSites = array.length();
@@ -62,6 +64,19 @@ public class TPManager {
 						"userid"));
 			}
 			return returnSites;
+		}
+
+	}
+	public Site getSiteByID(String id) {
+		JSONObject response = getJSON(new SiteInfoRequestBuilder(id, this)
+				.getURL());
+		if (response.getInt("statuscode") == 1) {
+			success = true;
+			return new Site(id);
+		} else {
+			success = false;
+			message = response.getString("message");
+			return null;
 		}
 
 	}
