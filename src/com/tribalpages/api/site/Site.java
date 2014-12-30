@@ -56,7 +56,8 @@ public class Site {
 		int num = namesArray.length();
 		Person[] names = new Person[num];
 		for (int i = 0; i < num; i++) {
-			names[i] = new Person(namesArray.getJSONObject(i).getInt("id"));
+			names[i] = new Person(namesArray.getJSONObject(i).getInt("id"),
+					this);
 		}
 		session.setSucess(true);
 		session.setMessage("Getting name was succesful");
