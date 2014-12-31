@@ -35,6 +35,15 @@ public class Test {
 			Person[] name = site.getNames(session);
 			if (session.wasSuccessful()) {
 				System.out.println(name.length);
+				Person p = name[1];
+				String firstname = p.getFirstName(session);
+				String lastname = p.getLastName(session);
+				String birthplace = p.getBirthPlace(session);
+				if (session.wasSuccessful()) {
+					System.out.println(firstname + " " + lastname + " "
+							+ birthplace);
+				} else
+					System.out.println(session.getMessage());
 			}
 		}
 

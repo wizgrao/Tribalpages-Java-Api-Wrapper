@@ -1,4 +1,6 @@
 package com.tribalpages.api.site;
+import org.json.JSONObject;
+
 import com.tribalpages.api.user.TPManager;
 public class Person {
 	int id;
@@ -11,8 +13,65 @@ public class Person {
 	public int getID() {
 		return id;
 	}
-	public String getName(TPManager manager) {
-		return null;
+	public String getFirstName(TPManager manager) {
+		JSONObject response = com.tribalpages.api.utils.JSONManager
+				.getJSON(new com.tribalpages.api.request.NameInfoRequestBuilder(
+						site.getID(), id, manager).getURL());
+		if (response.getInt("statuscode") != 1) {
+			manager.setSucess(false);
+			manager.setMessage(response.getString("message"));
+			return null;
+		} else {
+			manager.setSucess(true);
+			manager.setMessage("Found person");
+			return response.getJSONObject("result").getString("firstname");
+		}
+
+	}
+	public String getLastName(TPManager manager) {
+		JSONObject response = com.tribalpages.api.utils.JSONManager
+				.getJSON(new com.tribalpages.api.request.NameInfoRequestBuilder(
+						site.getID(), id, manager).getURL());
+		if (response.getInt("statuscode") != 1) {
+			manager.setSucess(false);
+			manager.setMessage(response.getString("message"));
+			return null;
+		} else {
+			manager.setSucess(true);
+			manager.setMessage("Found person");
+			return response.getJSONObject("result").getString("lastname");
+		}
+
+	}
+	public String getMiddleName(TPManager manager) {
+		JSONObject response = com.tribalpages.api.utils.JSONManager
+				.getJSON(new com.tribalpages.api.request.NameInfoRequestBuilder(
+						site.getID(), id, manager).getURL());
+		if (response.getInt("statuscode") != 1) {
+			manager.setSucess(false);
+			manager.setMessage(response.getString("message"));
+			return null;
+		} else {
+			manager.setSucess(true);
+			manager.setMessage("Found person");
+			return response.getJSONObject("result").getString("middlename");
+		}
+
+	}
+	public String getBirthPlace(TPManager manager) {
+		JSONObject response = com.tribalpages.api.utils.JSONManager
+				.getJSON(new com.tribalpages.api.request.NameInfoRequestBuilder(
+						site.getID(), id, manager).getURL());
+		if (response.getInt("statuscode") != 1) {
+			manager.setSucess(false);
+			manager.setMessage(response.getString("message"));
+			return null;
+		} else {
+			manager.setSucess(true);
+			manager.setMessage("Found person");
+			return response.getJSONObject("result").getString("birthplace");
+		}
+
 	}
 
 	@Override

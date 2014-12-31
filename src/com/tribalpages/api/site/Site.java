@@ -7,6 +7,7 @@ import org.json.JSONObject;
 
 import com.tribalpages.api.request.NamesRequestBuilder;
 import com.tribalpages.api.user.TPManager;
+
 public class Site {
 	private String id;
 
@@ -85,5 +86,8 @@ public class Site {
 	int getVersion(TPManager session) {
 		return -1;
 	}
-
+	Person getPersonById(TPManager session, int id) {
+		JSONObject reponse = getJSON(NameInfoRequestBuilder)
+		return null;
+	}
 }
